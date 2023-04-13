@@ -66,69 +66,72 @@ class Recommended extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        item['name'] as String,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18.0),
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Text(
-                        '\$${item['price'] as double}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w800,
-                          fontSize: 20,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item['name'] as String,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 18.0),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Container(
-                        // width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '\$${item['prevPrice'] as double}',
-                              style: const TextStyle(color: Colors.grey),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(4.0),
-                              decoration: BoxDecoration(
-                                  color: Colors.orange,
-                                  borderRadius: BorderRadius.circular(5.0)),
-                              child: Text(
-                                '${item['discount']}%',
-                                style: const TextStyle(color: Colors.red),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(
+                          '\$${item['price'] as double}',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Container(
+                          // width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '\$${item['prevPrice'] as double}',
+                                style: const TextStyle(color: Colors.grey),
                               ),
+                              Container(
+                                padding: const EdgeInsets.all(4.0),
+                                decoration: BoxDecoration(
+                                    color: Colors.orange,
+                                    borderRadius: BorderRadius.circular(5.0)),
+                                child: Text(
+                                  '${item['discount']}%',
+                                  style: const TextStyle(color: Colors.red),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 6.0,
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.star,
+                              color: Colors.grey,
+                            ),
+                            Text(
+                              '${item['rating'] as double}',
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '(${item['reviews']})',
+                              style: const TextStyle(color: Colors.grey),
                             )
                           ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 6.0,
-                      ),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: Colors.grey,
-                          ),
-                          Text(
-                            '${item['rating'] as double}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '(${item['reviews']})',
-                            style: const TextStyle(color: Colors.grey),
-                          )
-                        ],
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
