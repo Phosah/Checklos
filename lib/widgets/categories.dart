@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Categories extends StatelessWidget {
-  Categories({super.key});
+class Categories extends StatefulWidget {
+  const Categories({super.key});
 
+  @override
+  State<Categories> createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
   final List<Map<String, String>> foodType = [
     {
       'name': 'Fast Food',
@@ -30,6 +35,10 @@ class Categories extends StatelessWidget {
     {'name': 'Groceries', 'icon': 'assets/images/cat-icon-5.png'},
     {'name': 'Bakery', 'icon': 'assets/images/cat-icon-1.png'},
   ];
+
+  final listOfStrings = ['KFC', 'Stop n Chop', 'Tetrazzini'];
+
+  String? dropdownValue = 'KFC';
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +101,52 @@ class Categories extends StatelessWidget {
               ],
             );
           }).toList(),
-        )
+        ),
+        const SizedBox(
+          height: 20.0,
+        ),
+        Row(
+          children: [
+            Row(
+              children: const [
+                Icon(Icons.filter_list),
+                SizedBox(
+                  width: 5,
+                ),
+                Text('Filters:'),
+              ],
+            ),
+            const SizedBox(
+              width: 10.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              decoration: const BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.all(Radius.circular(50))),
+              child: Row(
+                children: [
+                  DropdownButton<String>(
+                    value: dropdownValue,
+                    items: listOfStrings
+                        .map(
+                          (e) => DropdownMenuItem(
+                            value: e,
+                            child: Text(e),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      setState(() {
+                        dropdownValue = value!;
+                      });
+                    },
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
